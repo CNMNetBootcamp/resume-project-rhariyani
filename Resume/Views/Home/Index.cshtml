@@ -1,0 +1,73 @@
+﻿@model Resume.Models.Applicant
+@{
+    ViewData["Title"] = "Applicants ";
+
+}
+
+<h2 style="background-color:hsl(0, 100%, 90%);">Resume</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>Name: @Html.DisplayFor(modelItem => Model.FirstName)</th>
+          <th> @Html.DisplayFor(modelItem => Model.LastName)</th>
+            <th>Address: @Html.DisplayFor(modelItem => Model.Address)</th>
+            <th>Contact:@Html.DisplayFor(modelItem => Model.Contact)</th>
+            <th>Email: @Html.DisplayFor(modelItem => Model.Email)</th>
+            
+        </tr>
+    </thead>
+</table>
+
+<h>Degree</h>
+
+<table class="table">
+    @foreach (var applicant in Model.Educations)
+    {
+        <tr>
+
+            <th>Title:@Html.DisplayFor(modelItem => applicant.Title)</th>
+            <th>InsituteName:@Html.DisplayFor(modelItem => applicant.InstituteUniversity)</th>
+            <th>FromYear:@Html.DisplayFor(modelItem => applicant.FromYear)</th>
+            <th>ToYear:@Html.DisplayFor(modelItem => applicant.ToYear)</th>
+
+
+        </tr>
+    }
+</table>
+<h>Skills</h>
+
+<table class="table">
+    @foreach (var applicant in Model.Skills)
+    {
+        <tr>
+            <th>Skills:@Html.DisplayFor(modelItem => applicant.SkillName)</th>
+
+
+        </tr>
+    }
+</table>
+<h>Proffesional Experience</h>
+<table class="table">
+
+    @foreach (var job in Model.Job.OrderByDescending(j => j.FromYear))
+    {
+        <tr>
+            <th>CompanyName:@Html.DisplayFor(modelItem => job.Company)</th>
+            <th>Position:@Html.DisplayFor(modelItem => job.Position)</th>
+            <th>FromYear:@Html.DisplayFor(modelItem => job.FromYear)</th>
+            <th>ToYear:@Html.DisplayFor(modelItem => job.ToYear)</th>
+            <th>Exp:@Html.DisplayFor(modelItem => job.Workexperiences.ExperieceDescription)</th>
+
+        </tr>
+    }
+
+
+
+</table>
+
+
+
+
+
